@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    networks:
+      - proxy
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Berlin
+    volumes:
+      - ~/duplicati-volume/config:/config
+      - ~/duplicati-volume/backups:/backups
+      - ~/duplicati-volume/source:/source
+    ports:
+      - 8200:8200
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.duplicati.rule=Host(`duplicati.myngz.com`)'
+      - 'traefik.http.routers.duplicati.entrypoints=websecure'
+      - 'traefik.http.routers.duplicati.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.duplicati.loadbalancer.server.port=8200'
+    restart: always
+
+
+networks:
+  proxy:
+    external: false
+    name: proxy

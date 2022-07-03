@@ -7,8 +7,8 @@ services:
     networks:
       - proxy
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Europe/Berlin
     volumes:
       - ~/duplicati-volume/config:/config

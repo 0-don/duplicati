@@ -7,13 +7,13 @@ services:
     networks:
       - proxy
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=Europe/Berlin
     volumes:
       - ~/duplicati-volume/config:/config
       - ~/duplicati-volume/backups:/backups
-      - ~/pgbackups/:/source
+      - ~/duplicati-volume/source:/source
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.duplicati.rule=Host(`duplicati.myngz.com`)'

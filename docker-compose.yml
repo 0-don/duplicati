@@ -13,9 +13,7 @@ services:
     volumes:
       - ~/duplicati-volume/config:/config
       - ~/duplicati-volume/backups:/backups
-      - ~/duplicati-volume/source:/source
-    ports:
-      - 8200:8200
+      - ~/pgbackups/:/source
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.duplicati.rule=Host(`duplicati.myngz.com`)'

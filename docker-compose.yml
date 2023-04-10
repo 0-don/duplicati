@@ -16,7 +16,7 @@ services:
       - ~/duplicati-volume/source:/source
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.duplicati.rule=Host(`duplicati.myngz.com`)'
+      - 'traefik.http.routers.duplicati.rule=Host(`$DOMAIN`)'
       - 'traefik.http.routers.duplicati.entrypoints=websecure'
       - 'traefik.http.routers.duplicati.tls.certresolver=letsencrypt'
       - 'traefik.http.services.duplicati.loadbalancer.server.port=8200'

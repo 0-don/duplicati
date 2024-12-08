@@ -8,18 +8,18 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/Berlin
+      - SETTINGS_ENCRYPTION_KEY=xK9mP2nL5vB8qR4w
     volumes:
       - ~/duplicati-volume/config:/config
       - ~/duplicati-volume/backups:/backups
       - ~/duplicati-volume/source:/source
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.duplicati.rule=Host(`$DOMAIN`)'
-      - 'traefik.http.routers.duplicati.entrypoints=websecure'
-      - 'traefik.http.routers.duplicati.tls.certresolver=letsencrypt'
-      - 'traefik.http.services.duplicati.loadbalancer.server.port=8200'
+      - "traefik.enable=true"
+      - "traefik.http.routers.duplicati.rule=Host(`$DOMAIN`)"
+      - "traefik.http.routers.duplicati.entrypoints=websecure"
+      - "traefik.http.routers.duplicati.tls.certresolver=letsencrypt"
+      - "traefik.http.services.duplicati.loadbalancer.server.port=8200"
     restart: always
-
 
 networks:
   proxy:

@@ -8,7 +8,8 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/Berlin
-      - SETTINGS_ENCRYPTION_KEY=xK9mP2nL5vB8qR4w
+      - SETTINGS_ENCRYPTION_KEY=$PASSWORD
+      - DUPLICATI__WEBSERVICE_PASSWORD=$PASSWORD
     volumes:
       - ~/duplicati-volume/config:/config
       - ~/duplicati-volume/backups:/backups

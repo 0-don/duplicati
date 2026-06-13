@@ -19,5 +19,8 @@ jobs:
           echo PASSWORD=${{ secrets.PASSWORD }} >> .env
           cat .env
 
+      - name: Remove conflicting unmanaged container
+        run: docker rm -f duplicati || true
+
       - name: Docker run
         run: docker compose up -d --force-recreate --build
